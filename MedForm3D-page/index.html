@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedForm3D - Análisis Morfológico y Volumétrico 3D</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-square-plus main-cross"></i> MedForm<span class="highlight">3D</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tecnologia">Tecnología</a></li>
+                <li><a href="#visualizacion">Visualización 3D</a></li>
+                <li><a href="#registro">Registro</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <span class="badge">Tesis de Grado UNIBE</span>
+                <h1>El Futuro del Análisis Morfológico Clínico</h1>
+                <p>MedForm3D integra sensores LiDAR móviles y Visión Artificial de vanguardia para el escaneo tridimensional, medición volumétrica y seguimiento evolutivo preciso de patologías como Linfedema, Lipedema y Úlceras.</p>
+                <div class="hero-buttons">
+                    <a href="#registro" class="btn btn-primary">Crear Cuenta Médica</a>
+                    <a href="#tecnologia" class="btn btn-secondary">Ver Tecnología</a>
+                </div>
+            </div>
+            <div class="hero-video">
+                <div class="video-placeholder">
+                    <div class="video-overlay">
+                        <i class="fa-solid fa-play-circle play-icon"></i>
+                        <h3>Demostración MedForm3D</h3>
+                        <p>Video demostrativo generado mediante IA del entorno operativo de la app en iOS</p>
+                    </div>
+                    <div class="scanner-glow-effect"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="tecnologia" class="section tech-section">
+        <div class="container">
+            <h2 class="section-title">Ecosistema Tecnológico Inteligente</h2>
+            <p class="section-subtitle">Diseño semántico y funcional estructurado para el diagnóstico médico moderno.</p>
+            
+            <div class="tech-grid">
+                <div class="tech-card card-blue">
+                    <i class="fa-solid fa-user-shield tech-icon"></i>
+                    <h3>Azul Clínico</h3>
+                    <p>Modelado morfológico de la anatomía base del paciente y resguardo ético de datos médicos centralizados de forma segura a través de <strong>SwiftData</strong>.</p>
+                </div>
+                <div class="tech-card card-cyan">
+                    <i class="fa-solid fa-cube tech-icon"></i>
+                    <h3>Cian LiDAR</h3>
+                    <p>Captura geométrica activa mediante hardware móvil de detección lumínica y de distancia, construyendo mallas volumétricas tridimensionales en tiempo real.</p>
+                </div>
+                <div class="tech-card card-red">
+                    <i class="fa-solid fa-brain tech-icon"></i>
+                    <h3>Rojo Visión IA</h3>
+                    <p>Procesamiento avanzado mediante el modelo inteligente neuronal <strong>MedFormBrain</strong>, aislando y delimitando automáticamente el cuadro crítico de la lesión cutánea.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visualizacion" class="section interactive-3d-section">
+        <div class="container">
+            <h2 class="section-title">Representación Volumétrica Interactiva</h2>
+            <p class="section-subtitle">Interactúa directamente con la simulación de la nube de puntos y el entramado topográfico generado por el sensor LiDAR.</p>
+            
+            <div class="canvas-wrapper">
+                <div id="threejs-canvas-container"></div>
+                <div class="canvas-controls">
+                    <span class="control-indicator"><i class="fa-solid fa-circle-nodes pulse-dot"></i> Sensor LiDAR: Activo</span>
+                    <span class="control-indicator"><i class="fa-solid fa-expand"></i> Arrastra para rotar la malla morfológica</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="registro" class="section register-section">
+        <div class="container form-container">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h2>Alta de Especialista Clínico</h2>
+                    <p>Configura tu credencial de acceso para comenzar a gestionar carpetas de pacientes, reportes analíticos y expedientes médicos exportables en formato PDF.</p>
+                </div>
+                <form id="onboardingForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="fullName">Nombre Completo</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="fullName" placeholder="Ej. Dr. Mario Guzmán" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="medicalId">Identificación Médica / Colegiatura</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-id-card"></i>
+                                <input type="text" id="medicalId" placeholder="Ej. MD-231061" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico Institucional</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="email" placeholder="usuario@unibe.edu.do" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="specialty">Especialidad Médica</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-stethoscope"></i>
+                                <select id="specialty" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="vascular">Cirugía Vascular / Angiología</option>
+                                    <option value="dermatology">Dermatología Clínica</option>
+                                    <option value="physiatry">Fisiatría y Rehabilitación</option>
+                                    <option value="research">Investigación Académica</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="institution">Institución / Hospital</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-hospital"></i>
+                                <input type="text" id="institution" value="Universidad Iberoamericana (UNIBE)" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña de Seguridad</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" placeholder="Mínimo 8 caracteres" minlength="8" required>
+                        </div>
+                    </div>
+
+                    <div class="terms-wrapper">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Autorizo el tratamiento de datos para la gestión clínica y resguardo ético de expedientes morfológicos en MedForm3D.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fa-solid fa-user-plus"></i> Inicializar Cuenta Médica
+                    </button>
+                </form>
+                <div id="formSuccessMessage" class="success-alert hidden">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <h4>¡Registro Inicializado con Éxito!</h4>
+                        <p>Cuenta médica configurada correctamente. El sistema de bases de datos relacionales en SwiftData ha sincronizado tu perfil de especialista.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="thesis-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>MedForm<span class="highlight">3D</span></h3>
+                <p>Sistema Avanzado Móvil de Reconstrucción Volumétrica y Diagnóstico de Lesiones.</p>
+            </div>
+            <div class="footer-thesis-info">
+                <h4>Presentación Oficial de Proyecto de Grado</h4>
+                <p class="institution-name"><i class="fa-solid fa-graduation-cap"></i> Universidad Iberoamericana (UNIBE)</p>
+                <p class="authors">Desarrollado y Sustentado por:</p>
+                <div class="authors-badges">
+                    <span class="author-tag"><i class="fa-solid fa-user-doctor"></i> Mario de Jesús Guzmán Cabral</span>
+                    <span class="author-tag"><i class="fa-solid fa-user-doctor"></i> Melissa</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MedForm3D. Todos los derechos reservados. Santo Domingo, República Dominicana.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
